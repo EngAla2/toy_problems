@@ -12,8 +12,26 @@
  *
  */
 
- function isDeepEquals(obj1, obj2) {
-	// TO DO
+ 
+function isDeepEquals(obj1, obj2) {
+
+  if (obj1===obj2 && (obj1!==null || obj2!==null)&& (obj1!==undefined || obj2!==undefined))
+  for (const key in obj1)
+  { 
+  if (typeof(obj2[key]) !==typeof(obj1[key])){
+    return false
+  }
+    if (typeof(obj1[key]) === Object || typeof(obj2[key]) === Object){
+    isDeepEquals(obj1[key], obj2[key])
+  } else {
+    if (obj1[key] !== obj2[key] || obj1!==obj2 ){
+      return false;
+    }
+  }
+}
+else return false;
+return true;
+
 }
 
 
