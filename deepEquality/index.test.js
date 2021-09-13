@@ -15,7 +15,7 @@
  
 function isDeepEquals(obj1, obj2) {
 
-  if (obj1===obj2 && (obj1!==null || obj2!==null)&& (obj1!==undefined || obj2!==undefined))
+  if (obj1 && obj2)
   for (const key in obj1)
   { 
   if (typeof(obj2[key]) !==typeof(obj1[key])){
