@@ -28,11 +28,35 @@ const a = [34, 203, 3, 746, 200, 984, 198, 764, 9];
  *
 */
 
-// Feel free to add helper functions if needed
-
-const bubbleSort = (array) => {};
-
 /**
  * Remember to look here http://visualgo.net/sorting
  *
 */
+// Feel free to add helper functions if needed
+
+const bubbleSort = (array) => {
+
+  for (let len1 = array.length; len1 >= 0; len1--){
+    for (let len = 0; len < len1; len++){
+        if (array[len] < array[len -1])
+        {
+          var b = array[len];
+          array[len] = array[len-1];
+          array[len-1] = b;
+        }
+    }
+  }
+  return array
+};
+
+
+describe("Tests", () => {
+	it("test bubbleSort #case1", () => {
+		const result = bubbleSort([3,2,1,0])
+		expect(result).toEqual([0,1,2,3])
+	})
+  it("test bubbleSort #case2", () => {
+		const result = bubbleSort(a)
+		expect(result).toEqual([ 3, 9, 34,198 , 200, 203, 746, 764, 984])
+	})
+})
