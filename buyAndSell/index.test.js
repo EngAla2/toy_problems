@@ -32,8 +32,8 @@ var maximumProfit  = function(array) {
   const min = getMinOfArray(array)
   const max = getMaxOfArray(array.slice(array.indexOf(min)))
   if ( max - min > 0)
-    console.log("maximum profit", max - min)
-  else console.log("maximum profit is 0")
+    return max - min
+  else return 0
 
 }
 
