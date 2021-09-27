@@ -28,4 +28,29 @@ function getMinOfArray(numArray) {
 
 var maximumProfit  = function(array) {
 	//your code is here
+  // const array = [100, 80, 120, 130, 70, 60, 100, 125]
+  const min = getMinOfArray(array)
+  const max = getMaxOfArray(array.slice(array.indexOf(min)))
+  if ( max - min > 0)
+    console.log("maximum profit", max - min)
+  else console.log("maximum profit is 0")
+
 }
+
+
+
+describe("Tests", () => {
+  const myArray = [100, 80, 120, 130, 70, 60, 100, 125]
+
+
+	it("test maximumProfit #case1", () => {
+		const result = maximumProfit(myArray)
+		expect(result).toEqual(65)
+	})
+
+	it("test maximumProfit #case2", () => {
+		const result = maximumProfit([100, 80, 70, 65, 60, 55, 50])
+		expect(result).toEqual(0)
+	})
+
+})
