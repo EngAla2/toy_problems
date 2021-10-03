@@ -29,6 +29,6 @@
       expect(toSnakeCase('TheStealthWarrior')).toStrictEqual('the_stealth_warrior')
       expect(toSnakeCase('ABC')).toStrictEqual('a_b_c')
       expect(toSnakeCase({ abcD: 1 })).toStrictEqual({ abc_d: 1 })
-      // expect(toSnakeCase([{ abcD: 1, user: {userId: 2} }])).toStrictEqual([{ abc_d: 1, user: {user_id: 2} }])
+      // expect(toSnakeCase([{abcD: 1, user: {userId: 2}}])).toStrictEqual([{abc_d: 1, user: {user_id: 2}}]);
     });
   });
