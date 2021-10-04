@@ -8,5 +8,22 @@
  */
 
 const bitCounting = (num) => {
-  // TODO
+  let bin = 0
+  while(num > 0){
+    if (num % 2)
+      bin++
+    num = Math.floor(num/2)
+  }
+  return(bin)
 };
+
+describe("#bitCounting", () => {
+
+  it('test bitCounting', () => {
+    expect(bitCounting(1234)).toEqual(5);
+    expect(bitCounting(1)).toStrictEqual(1);
+    expect(bitCounting(0)).toStrictEqual(0);
+    expect(bitCounting(2)).toStrictEqual(1);
+  });
+});
+
