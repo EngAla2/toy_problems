@@ -23,7 +23,39 @@
  *
  *	"())"
  */
-
 function balancedParens(input) {
-  //  TO DO
+  input = input.match(/[()[\]{}]/g)
+  let parens = {
+    '(':')',
+    '[':']',
+    '{':'}',
+  }
+  let open = []
+  for(let i = 0; i < input.length; i++){
+    if(Object.keys(parens).includes(input[i])){
+      open.push(input[i])}
+    else {
+      if(parens[ open.pop()]!==input[i]) {
+      return false}
+  }}
+  if(open[0]) return false
+  return true
 }
+
+describe('Test', () => {
+  it('test #balancedParens Truthy', () => {
+    expect(balancedParens('{}')).toBeTruthy();
+    expect(balancedParens('{}(hi){}')).toBeTruthy();
+    expect(balancedParens('()[dummy[]dummy]')).toBeTruthy();
+    expect(balancedParens('()[{}[]]')).toBeTruthy();
+    expect(balancedParens(' var hubble = function() { telescopes.awesome() };')).toBeTruthy();
+  });
+
+  it('test #balancedParens Falsy', () => {
+    expect(balancedParens(')()(')).toBeFalsy();
+    expect(balancedParens('[({}]')).toBeFalsy();
+    expect(balancedParens('(]char in between(')).toBeFalsy();
+    expect(balancedParens('{([maby here to]})')).toBeFalsy();
+    expect(balancedParens(' var hubble = function() { telescopes.awesome();')).toBeFalsy();
+  });
+});
