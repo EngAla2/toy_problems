@@ -23,3 +23,41 @@ var solvedBoard = [[0,1,1],
                    [2,1,2]];
 ticTacToe(solvedBoard);//should return 1
 */
+const ticTacToe = (board) => {
+  for (let x = 0; x < board.length; x++)
+  {
+    let row = true
+    let col = true
+    const firstElem =  board[x][0]
+    const firstColElem =  board[0][x]
+    for (let i = 1; i < board[x].length; i++)
+      row = row && (firstElem === board[x][i])
+    if (row) return 1 
+    for (let i = 0; i < board[x].length; i++)
+      col = col && (firstColElem === board[i][x])
+    if (col) return 1 
+  }
+  let _x = true
+  let _y = true
+  for (let i = 0; i < board.length; i++)
+    {
+      for (let x = board.length -1; x > 0; x--)
+        {_y = _y && (board[x][i] === board[i][x])
+        _x = _x && (board[x][i] === board[i][x])}
+    }
+  if (_x || _y) return 1 
+  return -1
+} 
+
+describe('Tests', () => {
+  it('test ticTacToe', () => {
+    var board = [[0,0,1],
+             [0,1,2],
+             [2,1,0]];
+    expect(ticTacToe(board)).toEqual(-1);
+    var solvedBoard = [[0,1,1],
+                      [0,1,2],
+                      [2,1,2]];
+    expect(ticTacToe(solvedBoard)).toEqual(1);
+  });
+});
