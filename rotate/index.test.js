@@ -25,5 +25,21 @@ rotate(data, 12478) // => [3, 4, 5, 1, 2]
 */
 
 const rotate = function(array, steps) {
-
+  let rot = steps % array.length
+  let right = steps > 0 ? true : false
+  for(let i = 0; i < Math.abs(rot); i++)
+      if (right) array.unshift(array.pop());
+      else array.push(array.shift());
+  return array;
 };
+
+describe('Tests', () => {
+  it('test rotate', () => {
+    expect(rotate(['a', 'b', 'c'], 1)).toEqual(['c', 'a', 'b']);
+    expect(rotate(['a', 'b', 'c'], 2)).toEqual(['b', 'c', 'a']);
+    expect(rotate(['a', 'b', 'c'], 3)).toEqual(['a', 'b', 'c']);
+    expect(rotate([1, 2, 3, 4, 5], 7)).toEqual([4, 5, 1, 2, 3]);
+    expect(rotate([1, 2, 3, 4, 5], 11)).toEqual([5, 1, 2, 3, 4]);
+    expect(rotate([1, 2, 3, 4, 5], 12478)).toEqual([3, 4, 5, 1, 2]);    
+  });
+});
