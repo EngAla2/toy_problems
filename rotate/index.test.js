@@ -25,6 +25,7 @@ rotate(data, 12478) // => [3, 4, 5, 1, 2]
 */
 
 const rotate = function(array, steps) {
+  // return [...array.slice(steps, array.length), ...array.slice(0, steps)]; // best sol
   let rot = steps % array.length
   let right = steps > 0 ? true : false
   for(let i = 0; i < Math.abs(rot); i++)
