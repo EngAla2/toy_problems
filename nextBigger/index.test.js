@@ -14,5 +14,25 @@ nextBigger(531)==-1
 */
 
 const nextBigger = function(num) {
-
+  num = String(num).split('')
+  for(let i= num.length -1 ; i > 0; i--){
+    if(num[i]>num[i-1]){
+      var b = num[i];
+      num[i] = num[i-1];
+      num[i-1] = b;
+      return parseInt(num.join(""))
+    }
+  }
+  return -1
 };
+
+describe('Tests', () => {
+  it('test nextBigger', () => {
+    expect(nextBigger(9)).toEqual(-1);
+    expect(nextBigger(2017)).toEqual(2071);
+    expect(nextBigger(12)).toEqual(21);
+    expect(nextBigger(513)).toEqual(531);
+    expect(nextBigger(111)).toEqual(-1);
+    expect(nextBigger(0)).toEqual(-1);
+  });
+});
