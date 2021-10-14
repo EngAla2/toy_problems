@@ -11,5 +11,12 @@ secondMax([-1, -5, 2])== -1
 */
 
 const secondMax = function(array) {
-  // TODO
+  return array.sort(function(a,b){return a - b})[1]
 };
+
+describe('Tests', () => {
+  it('test secondMax', () => {
+    expect(secondMax([1,5, 2])).toEqual(2);
+    expect(secondMax([-1, -5, 2])).toEqual(-1);
+  });
+});
